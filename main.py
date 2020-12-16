@@ -22,6 +22,7 @@ def getfiles():
                 lb1.insert(tk.END,os.path.join(path, name))
 
 def movefiles():
+    lb2.delete(0,tk.END)
     # this will check listbox1 items length is equal to 0
     if lb1.size() == 0:
         # this will show a error message when there are no items in the list
