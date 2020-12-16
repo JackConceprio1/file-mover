@@ -41,8 +41,11 @@ def movefiles():
                 for i, listbox_entry in enumerate(lb1.get(0, tk.END)):
                     # this will get file name 
                     d = os.path.basename(listbox_entry)
-                    # this will move the file to the new location
-                    os.replace(listbox_entry, selectedDir+"/"+d)
+                    if(os.path.exists(listbox_entry) == True and os.path.exists(selectedDir+"/"+d) == False):
+                        # this will move the file to the new location
+                        os.replace(listbox_entry, selectedDir+"/"+d)
+                    else:
+                        lb2.insert(tk.END,"Error unable to move this file \n "+listbox_entry)
                 # when it is done with the loop it will show the user that it is done
                 messagebox.showinfo("message","all done")
             else:
