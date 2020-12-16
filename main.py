@@ -45,7 +45,11 @@ def movefiles():
                         # this will move the file to the new location
                         os.replace(listbox_entry, selectedDir+"/"+d)
                     else:
-                        lb2.insert(tk.END,"Error unable to move this file \n "+listbox_entry)
+                        if os.path.exists(listbox_entry) == False:
+                            lb2.insert(tk.END,"Error the old file path dose not exits \n "+listbox_entry)
+                        else:
+                            lb2.insert(tk.END,"Error there is a file in this folder all ready \n "+selectedDir+"/"+d)
+
                 # when it is done with the loop it will show the user that it is done
                 messagebox.showinfo("message","all done")
             else:
